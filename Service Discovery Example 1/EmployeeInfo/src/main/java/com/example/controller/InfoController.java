@@ -25,7 +25,7 @@ public class InfoController {
 	private RestTemplate restTemplate;
 	
 	@GetMapping(value = "/getEmployee/{id}")
-	public ResponseEntity<EmployeeInformation> getEmployeeInfo(@PathVariable("id") String id) {
+	public ResponseEntity<EmployeeInformation> getEmployeeInfo(@PathVariable("id") String id) throws Exception {
 
 		EmployeeInformation empInfo = null;
 		try {
@@ -39,6 +39,7 @@ public class InfoController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new Exception(e.getMessage());
 		}
 		return new ResponseEntity<EmployeeInformation>(empInfo, HttpStatus.OK);
 	}

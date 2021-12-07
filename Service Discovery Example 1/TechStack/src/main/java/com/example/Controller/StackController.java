@@ -1,5 +1,6 @@
 package com.example.Controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,8 +19,9 @@ import com.example.model.TechStack;
 public class StackController {
 
 	@GetMapping("/getStack/{id}")
-	public ResponseEntity<List<TechStack>> getStack(@PathVariable("id") String id) {
-
+	public ResponseEntity<List<TechStack>> getStack(@PathVariable("id") String id) throws Exception {
+		List<TechStack> techStackList = new ArrayList<>();
+		try {
 		List<TechStack> list = Arrays.asList(
 				new TechStack("1", "Java"), 
 				new TechStack("2", ".Net"),
@@ -27,9 +29,11 @@ public class StackController {
 				new TechStack("1", "Databse"), 
 				new TechStack("2", "Cloud"));
 
-		List<TechStack> techStackList = list.stream().filter(stack -> stack.getEmpId().equalsIgnoreCase(id))
+		techStackList = list.stream().filter(stack -> stack.getEmpId().equalsIgnoreCase(id))
 				.collect(Collectors.toList());
-
+		}catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 		return new ResponseEntity<List<TechStack>>(techStackList, HttpStatus.OK);
 	}
 }
