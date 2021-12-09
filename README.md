@@ -8,7 +8,7 @@ MicroServices Sample projects
 
 - API GATEWAY Example 1
 
-	- Example of Service dicovery, API gateway, Zipkin and sleuth zipkin 
+	- Example of Service dicovery, API gateway, sleuth zipkin 
 	- Created sample spring boot applications 
 
 
