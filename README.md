@@ -1,5 +1,5 @@
 # MicroService
-Service Discovery Micro Service Example
+MicroServices Sample projects
 
 - Service Discovery Example 1
 
